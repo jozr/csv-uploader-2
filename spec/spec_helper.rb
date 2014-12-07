@@ -1,4 +1,4 @@
-require './main'
+require './app'
 require 'shoulda-matchers'
 require 'capybara/rspec'
 
