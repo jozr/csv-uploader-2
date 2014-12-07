@@ -4,11 +4,7 @@ describe Artist do
   it { should validate_presence_of :name }
   it { should ensure_length_of(:name).is_at_most(95) }
 
-  it 'should validate uniqueness of email' do
-    artist_one = Artist.create(:name => 'David Bowie')
-    artist_two = Artist.new(:name => 'David Bowie')
-    expect(artist_two.save).to eq false
-  end
+  it { should validate_uniqueness_of(:name) }
 end
 
 describe Album do
@@ -24,6 +20,6 @@ describe Album do
 
   it { should ensure_inclusion_of(:release_year).in_range(1900..2020) }
   it { should ensure_inclusion_of(:rating).in_range(1..5) }
-  
+
   it { should validate_uniqueness_of(:name).scoped_to(:artist_id) }
 end
