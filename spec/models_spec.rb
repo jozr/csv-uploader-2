@@ -10,3 +10,14 @@ describe Artist do
     expect(artist_two.save).to eq false
   end
 end
+
+describe Album do
+  it { should validate_presence_of :artist_id }
+  it { should validate_presence_of :name }
+  it { should validate_presence_of :release_year }
+  it { should validate_presence_of :rating }
+  it { should ensure_length_of(:name).is_at_most(250) }
+  it { should validate_numericality_of(:release_year) }
+  it { should validate_numericality_of(:rating) }
+  it { should validate_uniqueness_of(:name).scoped_to(:artist_id) }
+end
