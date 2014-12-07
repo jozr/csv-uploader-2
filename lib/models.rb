@@ -15,5 +15,8 @@ class Album < ActiveRecord::Base
   validates_numericality_of :release_year
   validates_numericality_of :rating
 
+  validates_inclusion_of :release_year, in: 1900..2020
+  validates_inclusion_of :rating, in: 1..5
+
   validates :name, uniqueness: { :scope => :artist_id }
 end
